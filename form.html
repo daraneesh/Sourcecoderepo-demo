@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Page | Source Code Repository</title>
-    <!-- Modern Font: Segoe UI / Inter style -->
+    <title>For Shruthi Maa ❤️</title>
     <style>
         * {
             box-sizing: border-box;
@@ -13,118 +12,263 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: #f8fafc;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: radial-gradient(circle at center, #1a0b2e 0%, #090312 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            overflow: hidden;
+            position: relative;
         }
 
+        /* Ambient background glow */
+        .glow-bg {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: pulse-glow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.3); opacity: 0.9; }
+        }
+
+        /* Glassmorphism Card Container */
         .card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 40px;
-            max-width: 600px;
-            width: 100%;
+            border-radius: 24px;
+            padding: 50px 40px;
+            max-width: 480px;
+            width: 90%;
             text-align: center;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 10;
         }
 
-        .badge {
+        /* Header Styling */
+        .header-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
             display: inline-block;
-            background-color: #3b82f6;
-            color: #ffffff;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 6px 14px;
-            border-radius: 20px;
-            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         h1 {
+            color: #ffffff;
             font-size: 28px;
             font-weight: 700;
-            margin-bottom: 12px;
-            color: #ffffff;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
         }
 
         p.subtitle {
-            font-size: 16px;
-            color: #94a3b8;
-            margin-bottom: 8px;
-        }
-
-        p.feature-text {
+            color: #a78bfa;
             font-size: 15px;
-            color: #38bdf8;
-            margin-bottom: 30px;
-            font-weight: 500;
+            margin-bottom: 35px;
+            font-weight: 400;
         }
 
-        .button-group {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .button {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        /* Premium Heart Button */
+        .heart-btn {
+            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
             color: #ffffff;
-            padding: 12px 28px;
-            font-size: 16px;
-            font-weight: 600;
             border: none;
-            border-radius: 8px;
+            padding: 16px 36px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 50px;
             cursor: pointer;
-            transition: all 0.2s ease-in-out;
-            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 25px -5px rgba(236, 72, 153, 0.5);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            outline: none;
         }
 
-        .button:hover {
-            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px -1px rgba(37, 99, 235, 0.5);
+        .heart-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 15px 35px -5px rgba(236, 72, 153, 0.7);
+            background: linear-gradient(135deg, #f43f5e 0%, #a855f7 100%);
         }
 
-        .button:active {
-            transform: translateY(0);
+        .heart-btn:active {
+            transform: translateY(0) scale(0.98);
         }
 
-        .button-secondary {
-            background: transparent;
-            color: #e2e8f0;
-            border: 1px solid #475569;
-            box-shadow: none;
+        /* Overlay / Pop-up Styling */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(9, 3, 18, 0.85);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            z-index: 100;
         }
 
-        .button-secondary:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: #94a3b8;
-            box-shadow: none;
+        .overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal {
+            background: rgba(30, 16, 48, 0.9);
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            border-radius: 28px;
+            padding: 40px 30px;
+            text-align: center;
+            transform: scale(0.8);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 50px rgba(236, 72, 153, 0.3);
+            max-width: 400px;
+            width: 85%;
+        }
+
+        .overlay.active .modal {
+            transform: scale(1);
+        }
+
+        /* Glowing Heart inside Pop-up */
+        .big-heart {
+            font-size: 70px;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: heartbeat 1.2s infinite;
+            filter: drop-shadow(0 0 20px rgba(244, 63, 94, 0.8));
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.25); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.25); }
+            70% { transform: scale(1); }
+        }
+
+        .modal-text {
+            font-size: 26px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+            line-height: 1.3;
+        }
+
+        .close-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #d1d5db;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 24px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            pointer-events: none;
+            animation: floatUp 4s linear infinite;
+            font-size: 20px;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
 
+    <div class="glow-bg"></div>
+
+    <!-- Main Card -->
     <div class="card">
-        <span class="badge">Testing Environment</span>
-        <h1>Welcome to the Shopping App</h1>
-        <p class="subtitle">Source Code Repository</p>
-        <p class="feature-text">✨ New feature added — Ready for web app testing!</p>
+        <div class="header-icon">✨</div>
+        <h1>Special Message</h1>
+        <p class="subtitle">Click the button below to reveal</p>
         
-        <div class="button-group">
-            <button class="button" onclick="alert('Hello! Testing active.')">Test Feature</button>
-            <button class="button button-secondary" onclick="console.log('App running...')">Log Status</button>
+        <button class="heart-btn" onclick="showMessage()">
+            <span>Reveal Message</span> ❤️
+        </button>
+    </div>
+
+    <!-- Heart Pop-up Modal -->
+    <div class="overlay" id="messageOverlay">
+        <div class="modal">
+            <div class="big-heart">💖</div>
+            <div class="modal-text">I Love You<br>Shruthi Maa</div>
+            <button class="close-btn" onclick="closeMessage()">Close</button>
         </div>
     </div>
+
+    <script>
+        function showMessage() {
+            document.getElementById('messageOverlay').classList.add('active');
+            createHeartBurst();
+        }
+
+        function closeMessage() {
+            document.getElementById('messageOverlay').classList.remove('active');
+        }
+
+        // Floating Heart Particles Creation
+        function createHeartBurst() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('particle');
+                    heart.innerHTML = ['❤️', '💖', '💕', '✨'][Math.floor(Math.random() * 4)];
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.top = '100vh';
+                    heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                    heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    document.body.appendChild(heart);
+
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 5000);
+                }, i * 150);
+            }
+        }
+    </script>
 
 </body>
 </html>
