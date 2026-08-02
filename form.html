@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: radial-gradient(circle at center, #1a0b2e 0%, #090312 100%);
+            background: radial-gradient(circle at center, #2e0938 0%, #0c0214 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -22,110 +22,115 @@
             position: relative;
         }
 
-        /* Ambient background glow */
-        .glow-bg {
+        /* Background Star Particles */
+        .stars {
             position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
-            border-radius: 50%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
-            animation: pulse-glow 4s ease-in-out infinite alternate;
+            z-index: 1;
         }
 
-        @keyframes pulse-glow {
-            0% { transform: scale(1); opacity: 0.5; }
-            100% { transform: scale(1.3); opacity: 0.9; }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
         }
 
-        /* Glassmorphism Card Container */
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+
+        /* Glassmorphism Main Card */
         .card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 50px 40px;
-            max-width: 480px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            border-radius: 28px;
+            padding: 45px 35px;
+            max-width: 450px;
             width: 90%;
             text-align: center;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7),
+                        0 0 50px rgba(236, 72, 153, 0.25);
             position: relative;
             z-index: 10;
         }
 
-        /* Header Styling */
-        .header-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
+        .card-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
             display: inline-block;
-            animation: float 3s ease-in-out infinite;
+            animation: pulse-ring 2s infinite ease-in-out;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        @keyframes pulse-ring {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(244, 63, 94, 0.6)); }
+            50% { transform: scale(1.15); filter: drop-shadow(0 0 25px rgba(244, 63, 94, 0.9)); }
         }
 
         h1 {
             color: #ffffff;
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: 0.5px;
+            margin-bottom: 8px;
         }
 
         p.subtitle {
-            color: #a78bfa;
+            color: #f472b6;
             font-size: 15px;
-            margin-bottom: 35px;
-            font-weight: 400;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
         }
 
-        /* Premium Heart Button */
-        .heart-btn {
-            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+        /* Proposal Trigger Button */
+        .proposal-btn {
+            background: linear-gradient(135deg, #f43f5e 0%, #a855f7 100%);
             color: #ffffff;
             border: none;
             padding: 16px 36px;
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 25px -5px rgba(236, 72, 153, 0.5);
+            box-shadow: 0 10px 30px rgba(244, 63, 94, 0.5);
             display: inline-flex;
             align-items: center;
             gap: 10px;
             outline: none;
         }
 
-        .heart-btn:hover {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 15px 35px -5px rgba(236, 72, 153, 0.7);
-            background: linear-gradient(135deg, #f43f5e 0%, #a855f7 100%);
+        .proposal-btn:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 15px 35px rgba(244, 63, 94, 0.8);
+            background: linear-gradient(135deg, #fb7185 0%, #c084fc 100%);
         }
 
-        .heart-btn:active {
+        .proposal-btn:active {
             transform: translateY(0) scale(0.98);
         }
 
-        /* Overlay / Pop-up Styling */
+        /* Overlay Pop-up Modal */
         .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(9, 3, 18, 0.85);
-            backdrop-filter: blur(10px);
+            background: rgba(12, 2, 20, 0.92);
+            backdrop-filter: blur(14px);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.5s ease;
             z-index: 100;
         }
 
@@ -135,81 +140,183 @@
         }
 
         .modal {
-            background: rgba(30, 16, 48, 0.9);
-            border: 1px solid rgba(236, 72, 153, 0.3);
-            border-radius: 28px;
+            background: rgba(38, 14, 56, 0.95);
+            border: 2px solid rgba(244, 63, 94, 0.5);
+            border-radius: 32px;
             padding: 40px 30px;
             text-align: center;
-            transform: scale(0.8);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 0 50px rgba(236, 72, 153, 0.3);
-            max-width: 400px;
-            width: 85%;
+            transform: scale(0.7);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 70px rgba(244, 63, 94, 0.6);
+            max-width: 420px;
+            width: 88%;
+            position: relative;
         }
 
         .overlay.active .modal {
             transform: scale(1);
         }
 
-        /* Glowing Heart inside Pop-up */
-        .big-heart {
-            font-size: 70px;
-            margin-bottom: 20px;
-            display: inline-block;
-            animation: heartbeat 1.2s infinite;
-            filter: drop-shadow(0 0 20px rgba(244, 63, 94, 0.8));
+        /* Proposal Animation Graphics */
+        .proposal-animation {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 15px;
+            height: 125px;
+            margin-bottom: 25px;
+            position: relative;
         }
 
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            14% { transform: scale(1.25); }
-            28% { transform: scale(1); }
-            42% { transform: scale(1.25); }
-            70% { transform: scale(1); }
+        .character {
+            font-size: 65px;
+            line-height: 1;
         }
 
-        .modal-text {
-            font-size: 26px;
+        /* BRIGHT CUTE GIRL FACE AVATAR STYLING (LEFT SIDE) */
+        .girl-avatar {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            border: 3px solid #ff79c6;
+            box-shadow: 0 0 25px #ff79c6, 0 0 50px #ff2a85;
+            object-fit: cover;
+            opacity: 0;
+            background: #fff;
+        }
+
+        .overlay.active .girl-avatar {
+            animation: receiveGirl 0.8s forwards 0.2s ease-out, glowPulse 2s infinite ease-in-out 1s;
+        }
+
+        @keyframes receiveGirl {
+            0% { transform: translateX(-40px) scale(0.8); opacity: 0; }
+            100% { transform: translateX(0) scale(1); opacity: 1; }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 20px #ff79c6, 0 0 40px #ff2a85; }
+            50% { box-shadow: 0 0 35px #ffb86c, 0 0 65px #ff2a85; }
+        }
+
+        /* Ring floating towards girl from right */
+        .ring {
+            font-size: 35px;
+            position: absolute;
+            right: 42%;
+            bottom: 20px;
+            opacity: 0;
+        }
+
+        .overlay.active .ring {
+            animation: offerRing 1s forwards 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes offerRing {
+            0% { transform: scale(0) translateY(20px); opacity: 0; }
+            100% { transform: scale(1.3) translateY(-15px); opacity: 1; filter: drop-shadow(0 0 15px #fde047); }
+        }
+
+        /* Boy kneeling down animation (RIGHT SIDE) */
+        .boy {
+            transform: translateY(20px) rotate(10deg);
+            opacity: 0;
+        }
+
+        .overlay.active .boy {
+            animation: kneelRight 0.8s forwards 0.2s ease-out;
+        }
+
+        @keyframes kneelRight {
+            0% { transform: translateX(40px) translateY(0); opacity: 0; }
+            100% { transform: translateX(0) translateY(12px) rotate(15deg); opacity: 1; }
+        }
+
+        /* Message Styling */
+        .message-title {
+            font-size: 32px;
             font-weight: 800;
-            background: linear-gradient(135deg, #ffffff 0%, #f472b6 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #f472b6 50%, #fb7185 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 25px;
             line-height: 1.3;
         }
 
-        .close-btn {
-            background: rgba(255, 255, 255, 0.1);
-            color: #d1d5db;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 10px 24px;
-            border-radius: 20px;
-            font-size: 14px;
+        .btn-yes {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: #ffffff;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.2s ease;
+            box-shadow: 0 5px 25px rgba(34, 197, 94, 0.5);
         }
 
-        .close-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: #ffffff;
+        .btn-yes:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 30px rgba(34, 197, 94, 0.7);
         }
 
-        /* Floating particles */
-        .particle {
+        /* UMMAA KISS POP-UP MODAL */
+        .kiss-modal {
+            background: rgba(50, 10, 40, 0.98);
+            border: 3px solid #ff79c6;
+            border-radius: 32px;
+            padding: 40px 25px;
+            text-align: center;
+            box-shadow: 0 0 80px #ff2a85;
+            max-width: 380px;
+            width: 85%;
+            position: relative;
+            z-index: 120;
+        }
+
+        .kiss-emoji {
+            font-size: 70px;
+            margin-bottom: 10px;
+            animation: bounceKiss 0.8s infinite alternate;
+        }
+
+        @keyframes bounceKiss {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.3) rotate(10deg); filter: drop-shadow(0 0 20px #ff2a85); }
+        }
+
+        .kiss-text {
+            font-size: 34px;
+            font-weight: 900;
+            color: #ff79c6;
+            text-shadow: 0 0 20px #ff2a85;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .kiss-subtext {
+            font-size: 20px;
+            color: #fde047;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        /* Floating Hearts Canvas/Particles */
+        .floating-heart {
             position: absolute;
             pointer-events: none;
-            animation: floatUp 4s linear infinite;
-            font-size: 20px;
-            opacity: 0;
+            animation: floatUp 4s linear forwards;
+            z-index: 105;
         }
 
         @keyframes floatUp {
             0% {
-                transform: translateY(0) rotate(0deg);
+                transform: translateY(0) scale(0.8) rotate(0deg);
                 opacity: 1;
             }
             100% {
-                transform: translateY(-100vh) rotate(360deg);
+                transform: translateY(-100vh) scale(1.4) rotate(360deg);
                 opacity: 0;
             }
         }
@@ -217,55 +324,119 @@
 </head>
 <body>
 
-    <div class="glow-bg"></div>
+    <!-- Stars background -->
+    <div class="stars" id="starsContainer"></div>
 
     <!-- Main Card -->
     <div class="card">
-        <div class="header-icon">✨</div>
-        <h1>Special Message</h1>
-        <p class="subtitle">Click the button below to reveal</p>
-        
-        <button class="heart-btn" onclick="showMessage()">
-            <span>Reveal Message</span> ❤️
+        <div class="card-icon">👑</div>
+        <h1>Special Surprise</h1>
+        <p class="subtitle">A message for Shruthi Maa</p>
+
+        <button class="proposal-btn" onclick="openProposal()">
+            <span>Reveal Secret</span> 💖
         </button>
     </div>
 
-    <!-- Heart Pop-up Modal -->
-    <div class="overlay" id="messageOverlay">
+    <!-- Proposal Modal Pop-up -->
+    <div class="overlay" id="proposalModal">
         <div class="modal">
-            <div class="big-heart">💖</div>
-            <div class="modal-text">I Love You<br>Shruthi Maa</div>
-            <button class="close-btn" onclick="closeMessage()">Close</button>
+            
+            <!-- Girl on Left, Boy Proposing on Right -->
+            <div class="proposal-animation">
+                <img class="girl-avatar" src="https://api.iconify.design/noto:girl-light-skin-tone.svg?color=%23ffffff" alt="Shruthi Maa">
+                <div class="ring">💍</div>
+                <div class="character boy">🧎‍♂️</div>
+            </div>
+
+            <!-- Proposal Message -->
+            <div class="message-title">I Love You<br>Shruthi Maa ❤️</div>
+
+            <button class="btn-yes" onclick="showKiss()">Yes ❤️</button>
+        </div>
+    </div>
+
+    <!-- Umma Kiss Pop-up Modal -->
+    <div class="overlay" id="kissModal">
+        <div class="kiss-modal">
+            <div class="kiss-emoji">💋😘💋</div>
+            <div class="kiss-text">Umma Umaaa Umaaa!</div>
+            <div class="kiss-subtext">Love You So Much! ❤️✨</div>
+            <button class="btn-yes" onclick="closeAll()">Close 💖</button>
         </div>
     </div>
 
     <script>
-        function showMessage() {
-            document.getElementById('messageOverlay').classList.add('active');
-            createHeartBurst();
+        // Generate Starry Background
+        const starsContainer = document.getElementById('starsContainer');
+        for (let i = 0; i < 60; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.width = Math.random() * 3 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+            starsContainer.appendChild(star);
         }
 
-        function closeMessage() {
-            document.getElementById('messageOverlay').classList.remove('active');
+        // Open Proposal Pop-up & Trigger Animations
+        function openProposal() {
+            document.getElementById('proposalModal').classList.add('active');
+            triggerHeartRain();
         }
 
-        // Floating Heart Particles Creation
-        function createHeartBurst() {
-            for (let i = 0; i < 20; i++) {
+        // Show Kiss Pop-up when "Yes" is clicked
+        function showKiss() {
+            document.getElementById('proposalModal').classList.remove('active');
+            document.getElementById('kissModal').classList.add('active');
+            triggerKissRain();
+        }
+
+        // Close all modals
+        function closeAll() {
+            document.getElementById('kissModal').classList.remove('active');
+        }
+
+        // Generate Bright Floating Hearts & Sparkles
+        function triggerHeartRain() {
+            const symbols = ['💖', '💍', '🌸', '✨', '💕', '🌹', '💗', '⭐'];
+            for (let i = 0; i < 30; i++) {
                 setTimeout(() => {
                     const heart = document.createElement('div');
-                    heart.classList.add('particle');
-                    heart.innerHTML = ['❤️', '💖', '💕', '✨'][Math.floor(Math.random() * 4)];
+                    heart.classList.add('floating-heart');
+                    heart.innerText = symbols[Math.floor(Math.random() * symbols.length)];
                     heart.style.left = Math.random() * 100 + 'vw';
-                    heart.style.top = '100vh';
-                    heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                    heart.style.bottom = '-50px';
+                    heart.style.fontSize = (Math.random() * 22 + 20) + 'px';
                     heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
                     document.body.appendChild(heart);
 
                     setTimeout(() => {
                         heart.remove();
                     }, 5000);
-                }, i * 150);
+                }, i * 110);
+            }
+        }
+
+        // Extra Burst of Kisses and Hearts on "Yes"
+        function triggerKissRain() {
+            const symbols = ['💋', '😘', '💖', '💕', '💋', '❤️', '✨'];
+            for (let i = 0; i < 40; i++) {
+                setTimeout(() => {
+                    const kiss = document.createElement('div');
+                    kiss.classList.add('floating-heart');
+                    kiss.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+                    kiss.style.left = Math.random() * 100 + 'vw';
+                    kiss.style.bottom = '-50px';
+                    kiss.style.fontSize = (Math.random() * 25 + 22) + 'px';
+                    kiss.style.animationDuration = (Math.random() * 2 + 2.5) + 's';
+                    document.body.appendChild(kiss);
+
+                    setTimeout(() => {
+                        kiss.remove();
+                    }, 5000);
+                }, i * 90);
             }
         }
     </script>
