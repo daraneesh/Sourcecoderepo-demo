@@ -3,33 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome Page</title>
+    <title>Shopping Page | Source Code Repository</title>
+    <!-- Modern Font: Segoe UI / Inter style -->
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
             text-align: center;
-            margin-top: 50px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
         }
-        .button {
-            background-color: blue;
-            color: white;
-            padding: 10px 20px;
+
+        .badge {
+            display: inline-block;
+            background-color: #3b82f6;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        p.subtitle {
             font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            color: #94a3b8;
+            margin-bottom: 8px;
         }
+
+        p.feature-text {
+            font-size: 15px;
+            color: #38bdf8;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: #ffffff;
+            padding: 12px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.4);
+        }
+
         .button:hover {
-            background-color: darkblue;
+            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px -1px rgba(37, 99, 235, 0.5);
+        }
+
+        .button:active {
+            transform: translateY(0);
+        }
+
+        .button-secondary {
+            background: transparent;
+            color: #e2e8f0;
+            border: 1px solid #475569;
+            box-shadow: none;
+        }
+
+        .button-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: #94a3b8;
+            box-shadow: none;
         }
     </style>
 </head>
 <body>
 
-    <h1>Welcome to shoping page </h1>
-    <h1>This is the sourcecode repository</h1>
-    <h1>Finally Added a new feature , I  want to testing my web app</h1>
-    <button class="button" onclick="alert('Hello!')">Hello</button>
+    <div class="card">
+        <span class="badge">Testing Environment</span>
+        <h1>Welcome to the Shopping App</h1>
+        <p class="subtitle">Source Code Repository</p>
+        <p class="feature-text">✨ New feature added — Ready for web app testing!</p>
+        
+        <div class="button-group">
+            <button class="button" onclick="alert('Hello! Testing active.')">Test Feature</button>
+            <button class="button button-secondary" onclick="console.log('App running...')">Log Status</button>
+        </div>
+    </div>
 
 </body>
 </html>
